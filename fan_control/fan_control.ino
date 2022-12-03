@@ -90,7 +90,11 @@ void loop() {
     Serial.println("Réglage sur MAX");
     
   }else{
-    ledcWrite(PWMChannel, 200);
+    //ledcWrite(PWMChannel, 200);
+
+    pinMode(27, OUTPUT); //Il faut déclarer le pin en sortie
+    digitalWrite(2, LOW);
+
     Serial.println("Réglage sur MIN");
   }  
   
