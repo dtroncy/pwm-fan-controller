@@ -1,9 +1,3 @@
-/*********
-  Rui Santos
-  Complete project details at http://randomnerdtutorials.com  
-  Based on the Dallas Temperature Library example
-*********/
-
 #include <OneWire.h>
 #include <DallasTemperature.h> //remplacer les () par <>
 
@@ -85,7 +79,10 @@ void loop() {
   // print the device information
   printTemperature("Inside : ", insideThermometer);
 
-  if (sensors.getTempC(insideThermometer)>22){
+  if (sensors.getTempC(insideThermometer)>25){
+
+    pinMode(27, OUTPUT); //Il faut déclarer le pin en sortie
+    digitalWrite(27, HIGH);
     ledcWrite(PWMChannel, MAX_DUTY_CYCLE);
     Serial.println("Réglage sur MAX");
     
@@ -93,7 +90,7 @@ void loop() {
     //ledcWrite(PWMChannel, 200);
 
     pinMode(27, OUTPUT); //Il faut déclarer le pin en sortie
-    digitalWrite(2, LOW);
+    digitalWrite(27, LOW);
 
     Serial.println("Réglage sur MIN");
   }  
